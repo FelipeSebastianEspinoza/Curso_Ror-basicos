@@ -5,13 +5,18 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
 
+  # def index
+  #   @images = Image.all
+  # end
+
   def index
-    @images = Image.all
+    @images = Image.where user_id: current_user.id
   end
 
   def create
     # render plain: params[:image].inspect
-    @image = Image.new image_params
+    @image = current_user.images.new image_params
+    # @image = Image.new image_params
     if @image.save
       return redirect_to @image
     end
