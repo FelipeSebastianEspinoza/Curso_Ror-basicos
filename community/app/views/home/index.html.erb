@@ -1,3 +1,30 @@
-<%- if current_user %>
+<%- if user_signed_in? %>
 <h1>Bienvenido <%= current_user.email %> </h1>
+
+<div class="row">
+    <div class="col-4">
+
+    </div>
+    <div class="col-8">
+        <div class="container">
+            <h1> <%= current_user.name %> </h1>
+            <ul class="nav">
+                <li>
+                    <p> <b> <%= @images.count %> </b> imágenes</p>
+                </li>
+                <li>
+                    <p> <b> 25 </b> hola</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <%= render @images %>
+</div>
+<%= will_paginate @images %>
+<% else %>
+
+
 <% end %>

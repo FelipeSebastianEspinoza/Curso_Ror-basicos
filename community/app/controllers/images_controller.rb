@@ -10,7 +10,9 @@ class ImagesController < ApplicationController
   # end
 
   def index
-    @images = Image.where user_id: current_user.id
+    if user_signed_in?
+      @images = Image.where user_id: current_user.id
+    end
   end
 
   def create
