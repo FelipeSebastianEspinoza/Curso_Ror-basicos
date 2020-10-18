@@ -1,6 +1,16 @@
-<%= form_for @image do |f| %>
-<%= f.label :description %><br>
-<%= f.text_field :description %>
-<br>
-<%= f.submit%>
-<% end %>
+ <div class="container-fluid">
+     <%= form_for @image, builder:CustomFormBuilder, :html => {:multipart => true}  do |f| %>
+     <%= f.form_error %>
+     <%= f.label :description %><br>
+     <%= f.text_field :description , class:'form-control' %>
+     <%- if @image.errors[:description].any? %>
+     <%= f.field_error :description %>
+
+
+     <% end %>
+     <%= f.label :picture %><br>
+     <%= f.file_field :picture %>
+     <br>
+     <%= f.submit %>
+     <% end %>
+ </div>

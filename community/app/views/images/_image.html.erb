@@ -1,5 +1,12 @@
-<%= image.description %>
-<%= link_to 'Edit',edit_image_path(image) %>  
-
-<%= link_to 'Destroy', image, method: :delete, data:{ confirm:'sure?' } %>
-<br>
+ <div class="col mt-3">
+     <figure class="figure">
+         <%= image_tag image.picture.thumb.url , class:'figure-img img-fluid rounded' %>
+         <figcaption class="figure-caption"><%= image.description %></figcaption>
+         <div class="d-flex justify-content-center">
+             <div class="btn-group" role="group" aria-label="Button group">
+                 <%= link_to t('.edit_link'), edit_image_path(image) , :class =>'btn btn-info ' %>
+                 <%= link_to t('.remove_link'), image, method: :delete, data:{ confirm:'sure?' } , :class =>'btn btn-danger' %>
+             </div>
+         </div>
+     </figure>
+ </div>
